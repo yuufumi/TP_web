@@ -1,0 +1,136 @@
+
+h1{
+    font-weight: bold;
+    font-style: italic;
+    font-family:'Poppins' ,sans-serif;
+}
+
+body{
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    flex-direction: column;
+}
+
+.phones{
+    background-color: #bbb;
+}
+
+.Features{
+    background-color: #bbb;
+}
+
+table {
+    border-collapse: collapse;
+    border: 2px dashed ;
+}
+th, td {
+    text-align: center;
+    border: 1px solid;
+}
+
+.container{
+    display: flex;
+    justify-content:space-around;
+    align-items:center;
+}
+
+.image1:hover{
+    opacity: 1;
+    animation-play-state: paused;
+}
+.image2:hover{
+    opacity: 1;
+    animation-play-state: paused;
+}
+.image3:hover{
+    opacity: 1;
+    animation-play-state: paused;
+}
+.image4:hover{
+    opacity: 1;
+    animation-play-state: paused;
+}
+.image1 {
+    max-width: 150px;
+    max-height: 150px;
+    margin-left: 20px;
+    animation-duration: 2s;
+    opacity: 0;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-name: fadeImage1; 
+
+    animation-fill-mode: both;
+}
+
+.image2 {
+    max-width: 150px;
+    max-height: 150px;
+    margin-left: 20px;
+    animation-duration: 2s;
+    animation-name: fadeImage2;
+    opacity: 0;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-delay: 2s;
+    animation-fill-mode: both;
+}
+
+.image3 {
+  animation-name: fadeImage3; /* Nom de l'animation pour la troisième image */
+  animation-delay: 4s; 
+  animation-duration: 2s;
+  margin-left: 20px;
+  opacity: 0;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite ;
+  animation-fill-mode: both;
+}
+.image4 {
+    animation-name: fadeImage4; /* Nom de l'animation pour la troisième image */
+    animation-delay: 6s;
+    animation-duration: 2s;
+    margin-left: 20px;
+    opacity: 0;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+}
+
+
+@keyframes fadeImage1{
+    0%, 100% {
+    opacity: 0;
+}
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeImage2 {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeImage3 {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeImage4 {
+    0%, 100% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
