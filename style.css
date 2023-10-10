@@ -16,8 +16,14 @@ body{
     background-color: #bbb;
 }
 
-.Features{
+#Features{
     background-color: #bbb;
+}
+.first_color {
+  background-color: orange;
+}
+.second_color{
+  background-color: yellow;
 }
 
 table {
@@ -30,107 +36,42 @@ th, td {
 }
 
 .container{
-    display: flex;
-    justify-content:space-around;
-    align-items:center;
+  position: relative;
+  height: 720px;
+  width: 480px;
+  animation: fadeImage1 8s ease-in-out infinite;
+  transition: opacity 0.5s ease-in-out;
 }
 
-.image1:hover{
-    opacity: 1;
+.container:hover{
     animation-play-state: paused;
-}
-.image2:hover{
-    opacity: 1;
-    animation-play-state: paused;
-}
-.image3:hover{
-    opacity: 1;
-    animation-play-state: paused;
-}
-.image4:hover{
-    opacity: 1;
-    animation-play-state: paused;
-}
-.image1 {
-    max-width: 150px;
-    max-height: 150px;
-    margin-left: 20px;
-    animation-duration: 2s;
-    opacity: 0;
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: infinite;
-    animation-name: fadeImage1; 
-
-    animation-fill-mode: both;
-}
-
-.image2 {
-    max-width: 150px;
-    max-height: 150px;
-    margin-left: 20px;
-    animation-duration: 2s;
-    animation-name: fadeImage2;
-    opacity: 0;
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: infinite;
-    animation-delay: 2s;
-    animation-fill-mode: both;
-}
-
-.image3 {
-  animation-name: fadeImage3; /* Nom de l'animation pour la troisième image */
-  animation-delay: 4s; 
-  animation-duration: 2s;
-  margin-left: 20px;
-  opacity: 0;
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: infinite ;
-  animation-fill-mode: both;
-}
-.image4 {
-    animation-name: fadeImage4; /* Nom de l'animation pour la troisième image */
-    animation-delay: 6s;
-    animation-duration: 2s;
-    margin-left: 20px;
-    opacity: 0;
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: infinite;
-    animation-fill-mode: both;
 }
 
 
 @keyframes fadeImage1{
-    0%, 100% {
-    opacity: 0;
-}
-  50% {
-    opacity: 1;
-  }
-}
+  0%{
+    background-image: url("./images/iphone.png");
+    background-size: 100%;
+    width: 480px;
+    height:650px;
+ }
+ 25%{
+  background-image: url("./images/xiaomi.png");
+  background-size: 100%;
+  width: 480px;
+  height:650px;
+ }
+  50%{
 
-@keyframes fadeImage2 {
-  0%, 100% {
-    opacity: 0;
+    background-image: url("./images/samsung.png");
+    background-size: 100%;
+    width: 480px;
+    height:600px;
   }
-  50% {
-    opacity: 1;
-  }
-}
-
-@keyframes fadeImage3 {
-  0%, 100% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
+  100%{
+    background-image: url("./images/huawei.png");
+    background-size: 100%;
+    width: 480px;
+    height:600px;
   }
 }
-
-@keyframes fadeImage4 {
-    0%, 100% {
-      opacity: 0;
-    }
-    50% {
-      opacity: 1;
-    }
-  }
