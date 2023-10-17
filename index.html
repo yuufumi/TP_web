@@ -9,6 +9,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link href="style.css" rel="stylesheet" type="text/css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="jquery.js"></script>
 </head>
 <body >
 
@@ -23,57 +25,75 @@
         </ul>
         <div><video src="videos/smartphone_video.mp4" controls></video></div>
         
-        <table border>
+        <table id="my_table" border>
             <thead>
-                <tr class="phones">
-                    <th scope="col">Features</th>
-                    <th scope="col">Xiaomi redmi Note 12</th>
-                    <th scope="col">Apple iPhone 15 plus</th>
-                    <th scope="col">Samsung Galaxy S21 Ultra</th>
-                    <th scope="col">Huawei p30 pro</th>
+                <tr id="phones" class="phones">
+                    <th>Features</th>
+                    <th>Xiaomi redmi Note 12</th>
+                    <th>Apple iPhone 15 plus</th>
+                    <th>Samsung Galaxy S21 Ultra</th>
+                    <th>Huawei p30 pro</th>
                 </tr>    
             </thead>
             <tbody>
-                <tr class="second_color">
+                <tr id="displayd" class="second_color">
                     <th id="Features" scope="row">Display</th>  
                     <td>6.67-inch</td>
                     <td>6.70-inch</td>
                     <td>6.80-inch</td>
                     <td>6.15-inch</td>  
                 </tr>
-                <tr class="first_color">
+                <tr id="RAMd" class="first_color">
                     <th id="Features"  scope="row">RAM</th>
                     <td >6GB</td>
                     <td >8GB</td>
                     <td >12GB</td>
                     <td >4GB</td>
                 </tr>
-                <tr class="second_color">
+                <tr id="storaged" class="second_color">
                     <th id="Features"  scope="row">Storage</th>
                     <td>128GB</td>
                     <td>512GB</td>
                     <td>1TB</td>
                     <td>128GB</td>
                 </tr>
-                <tr class="first_color">
+                <tr id="OSd" class="first_color">
                     <th id="Features"  scope="row">OS</th>
                     <td>Android</td>
                     <td>IOS</td>
                     <td colspan="2" align="center">Android</td>
                 </tr>    
-                <tr class="second_color">
+                <tr id="batteryd" class="second_color">
                     <th id="Features"  scope="row">Removable battery</th>
                     <td rowspan="2">No</td>
                     <td colspan="3" align="center">No</td>
                 </tr>
-                <tr class="first_color">
+                <tr id="chargingd" class="first_color">
                     <th id="Features"  scope="row">Wireless charging</th>
                     <td colspan="2" align="center">Yes</td>
                     <td>No</td>
                 </tr>
             </tbody>
         </table>
-        
+        <form id="feature_form" action="">
+            <label for="feature">Feature name: </label>
+            <input type="text" id="feature" class="from_control">
+
+            <label for="phone1">Xiaomi redmi Note 12: </label>
+            <input type="text" id="phone1" class="from_control">
+            
+            <label for="phone2">Apple iPhone 15 plus: </label>
+            <input type="text" id="phone2" class="from_control">
+            
+            <label for="phone3">Samsung Galaxy S21 Ultra: </label>
+            <input type="text" id="phone3" class="from_control">
+            
+            <label for="phone4">Huawei p30 pro: </label>
+            <input type="text" id="phone4" class="from_control">
+            
+            <input  type="button" value="Add" onclick="getFeatureData()" class="from_control" ></input>
+            
+        </form>
         <a href="mailto:ybenali884@gmail.com">Contactez moi sur mail</a>
 
 </body>

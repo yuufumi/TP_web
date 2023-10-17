@@ -75,3 +75,8 @@ th, td {
     height:600px;
   }
 }
+
+#feature_form{
+  display: flex;
+  flex-direction: column;
+}
