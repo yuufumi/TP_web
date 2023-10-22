@@ -5,6 +5,10 @@ h1{
     font-family:'Poppins' ,sans-serif;
 }
 
+.Forms {
+ display: flex;
+
+}
 body{
     display: flex;
     align-items: center;
@@ -18,12 +22,24 @@ body{
 
 #Features{
     background-color: #bbb;
+
 }
 .first_color {
   background-color: orange;
 }
 .second_color{
   background-color: yellow;
+}
+
+#feature_form{
+  display: flex;
+  flex-direction: column;
+  margin-right: 40px;
+}
+#phone_form{
+  display: flex;
+  flex-direction: column;
+  margin-left: 40px;
 }
 
 table {
