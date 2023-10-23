@@ -1,5 +1,10 @@
 <?php
 include("db_conn.php");
+session_start();
+if(isset($_SESSION['uname'])){
+    header("Location: admin.php");
+    exit();
+} else {
 if(isset($_POST['uname']) && isset($_POST['pass'])){
     function validate($data) {
         $data = trim($data);
@@ -20,7 +25,8 @@ if(isset($_POST['uname']) && isset($_POST['pass'])){
         $sql = "SELECT * FROM users WHERE username='$uname' AND password='$pass'";
         $result = mysqli_query($conn,$sql); 
         if(mysqli_num_rows($result) > 0){
-        header("Location: logged.php");
+        $_SESSION["uname"]= $uname;
+        header("Location: admin.php");
         exit();
         }else{
             header("Location: login_page.php?error=You're not an admin");
@@ -31,6 +37,6 @@ if(isset($_POST['uname']) && isset($_POST['pass'])){
     header("Location: index.php");
     exit();
 }
-
+}
 
 ?>

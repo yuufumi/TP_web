@@ -1,3 +1,12 @@
+<?php
+session_start(); // Starting the session
+
+// Check if the user is logged in as an administrator
+if (!isset($_SESSION['uname']) || $_SESSION['uname'] !== 'youcef') {
+    header("location: login_page.php");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -109,5 +118,8 @@
                 <button type="submit" class="from_control" >Ajouter</button>
             </form>
         </div>
+        <form action="logout.php" method="POST">
+        <input type="submit" name="logout" value="logout"></button>
+        </form>
 </body>
 </html>
