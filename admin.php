@@ -30,25 +30,16 @@ if (!isset($_SESSION['uname']) || $_SESSION['uname'] !== 'youcef') {
                     <th>Features</th>
                     <?php
                         include("db_conn.php");
-                        $sql="SELECT smartphone.Name_smartphone FROM smartphone";
+                        $sql="SELECT * FROM smartphone";
                         $smartphones=mysqli_query($conn,$sql);
                         while($row = $smartphones->fetch_assoc()) {
                             echo "<th >" . $row["Name_smartphone"]. "</th>"; 
                         }
-                    ?>
-                </tr>    
-            </thead>
-            <tbody> 
-            <?php
-                include("db_conn.php");
-                $sql= "SELECT smartphone.Name_smartphone, features.Name_Features, smartphone_features.Value_Smartphone_Features
-                FROM `smartphone_features`
-                JOIN smartphone ON smartphone_features.Id_Smartphone=smartphone.Id_smartphone
-                JOIN features ON smartphone_features.Id_Features=features.Id_Features";
-                
+                        echo "</tr></thead><tbody>";
                 $sql= "SELECT * FROM `features`";
                 $features = mysqli_query($conn,$sql);
                 $i = 0;
+
                 while($feature = $features->fetch_assoc()) {
                     if($i % 2){
                         $color = "second_color";
@@ -56,65 +47,55 @@ if (!isset($_SESSION['uname']) || $_SESSION['uname'] !== 'youcef') {
                         $color = "first_color";
                     }
                     echo "<tr class=".$color."><th id=Features>" . $feature["Name_Features"]. "</th>";
-                    $sql= "SELECT smartphone_features.Value_Smartphone_Features
+                    $sql= "SELECT smartphone_features.Value_Smartphone_Features, smartphone_features.Id_Smartphone
                     FROM `smartphone_features` WHERE smartphone_features.Id_Features=".$feature["Id_Features"]." ";
                     $values=mysqli_query($conn,$sql);
                     while($value = $values->fetch_assoc()) {
-                        echo "<td>" . $value["Value_Smartphone_Features"] . "</td>";    
+                        $sql="SELECT * FROM smartphone";
+                        $smartphones=mysqli_query($conn,$sql);
+                        while($row = $smartphones->fetch_assoc()) {
+                            if($value["Id_Smartphone"] === $row["Id_smartphone"]){
+                                echo "<td>" . $value["Value_Smartphone_Features"] . "</td>";   
+                            }
+                        }
+                
                     }
                     echo "</tr>";
-                    $i++;
+                $i++;
                 }
-            ?>
-
-
-                
+            ?>                
             </tbody>
         </table>
-
-
         <div class="Forms">
+
             <form id="feature_form" action="add_feature.php" method="POST">
-                <label for="feature">Feature name: </label>
-                <input type="text" id="feature" class="from_control" name="feature">
-
-                <label for="phone1">Xiaomi redmi Note 12: </label>
-                <input type="text" id="phone1" class="from_control" name="phone1">
-                
-                <label for="phone2">Apple iPhone 15 plus: </label>
-                <input type="text" id="phone2" class="from_control" name="phone2">
-                
-                <label for="phone3">Samsung Galaxy S21 Ultra: </label>
-                <input type="text" id="phone3" class="from_control" name="phone3">
+            <label for='feature'>Feature name: </label>
+            <input type='text' id="feature" class='from_control' name="feature">
+            <?php
+            include("db_conn.php");
+            $sql="SELECT * FROM smartphone";
+            $features=mysqli_query($conn,$sql);
+            while($row = $features->fetch_assoc()) {
+                echo "<label for=''>".$row["Name_smartphone"].": </label>
+                <input type='text' id=phone" . $row["Id_smartphone"] . " class='from_control' name=". $row["Id_smartphone"] .">";
+            }
             
-                <label for="phone4">Huawei p30 pro: </label>
-                <input type="text" id="phone4" class="from_control" name="phone4">
-            
-                <button  type="submit" value="Add" onclick="getFeatureData()" class="from_control" >Ajouter</button>
+            ?>
+            <button  type="submit" value="Add" onclick="getFeatureData()" class="from_control" >Ajouter</button>
             </form>
-
             <form id="phone_form" action="add_phone.php" method="POST">
                 <label for="Phone">Phone name: </label>
                 <input type="text" id="Phone" name="Phone" class="from_control">
-
-                <label for="Display">Display: </label>
-                <input type="text" id="Display" name="Display" class="from_control">
-                
-                <label for="RAM">RAM: </label>
-                <input type="text" id="RAM" name="RAM" class="from_control">
-                
-                <label for="Storage">Storage: </label>
-                <input type="text" id="Storage" name="Storage" class="from_control">
-                
-                <label for="OS">OS: </label>
-                <input type="text" id="OS" name="OS" class="from_control">
-                
-                <label for="Removable Battery">Removable Battery: </label>
-                <input type="text" id="Removable Battery" name="Removable_Battery" class="from_control">
-                
-                <label for="Wireless Charging">Wireless Charging: </label>
-                <input type="text" id="Wireless Charging" name="Wireless_Charging" class="from_control">
-                
+            <?php
+            include("db_conn.php");
+            $sql="SELECT * FROM features";
+            $features=mysqli_query($conn,$sql);
+            while($row = $features->fetch_assoc()) {
+                echo "<label for='feature'>".$row["Name_Features"].": </label>
+                <input type='text' id=" . $row["Name_Features"] . " class='from_control' name=". $row["Name_Features"] .">";
+            }
+            
+            ?>
                 <button type="submit" class="from_control" >Ajouter</button>
             </form>
         </div>
