@@ -31,7 +31,7 @@ body{
   background-color: yellow;
 }
 
-#feature_form{
+.feature_form{
   display: flex;
   flex-direction: column;
   margin-right: 40px;
@@ -95,4 +95,16 @@ th, td {
 #feature_form{
   display: flex;
   flex-direction: column;
+}
+
+.CRUD{
+  height: 50px;
+  width: 150px;
+}
+
+#Actions{
+  margin-left: 50px; 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }

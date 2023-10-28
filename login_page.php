@@ -5,16 +5,20 @@ session_start(); // Starting the session
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Check if the username and password are correct (you will need to implement your own validation here)
     $username = 'youcef'; // Replace with your actual admin username
-    $password = 'youcef'; // Replace with your actual admin password
+    $password = '41c1acf47bc28733557bcaa9f2ae7d9c'; // Replace with your actual admin password
 
-    if ($_POST['uname'] == $username && $_POST['pass'] == $password) {
+    if ($_POST['uname'] == $username && md5($_POST['pass']) == $password) {
         // Set session variables
         $_SESSION['uname'] = $username;
         // Redirect to the admin page or any other authenticated page
         header("Location: admin.php");
         exit();
-    } else {
-        $error = "Invalid username or password";
+    } else if($_POST['uname']=== ""){
+        $error = "username must be included";
+    }else if($_POST['pass'] === ""){
+        $error = "password must be included";
+    }else{
+        $error = "Oops, you're not an admin!!!";
     }
 }
 ?>
@@ -30,9 +34,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <form action="" method="post">
         <h2>LOGIN</h2>
-        <?php if (isset($_GET["error"])) { ?>
-        <p class="error"> <?php echo $_GET["error"]; ?></p>
-        <?php } ?>
+        <?php if (isset($error)) {
+        echo "<p class='error'>".$error."</p>";
+        }
+        ?>
         <label for="uname">User Name</label>
         <input type="text" name="uname" placeholder="Username">
 
@@ -41,11 +46,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <button type="submit">Login</button>
     </form>
-    <?php
-if (isset($error)) {
-    echo $error;
-}
-?>
-
     </body>
 </html>
