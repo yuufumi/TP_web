@@ -9,9 +9,12 @@ while($row = $features->fetch_assoc()) {
 };
 foreach ($_POST as $key => $value) {
     if($key !== 'feature'){
+        if($value !== ""){
         $sql="UPDATE smartphone_features SET Value_Smartphone_Features='".$value."' WHERE Id_Smartphone=".$key . " AND smartphone_features.Id_Features=".$feature_dict[$name];
         $conn->execute_query($sql);
+        }
     }
 }
+$_SESSION["modify"] = true;
 header("Location: admin.php");
 ?>

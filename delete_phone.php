@@ -12,5 +12,5 @@ while($row = $results->fetch_assoc()) {
         $result = mysqli_query($conn, $sql);
     }    
 };
-header("Location: admin.php");
+header("Location: admin.php")
 ?>
